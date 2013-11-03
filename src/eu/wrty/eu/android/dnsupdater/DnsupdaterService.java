@@ -19,7 +19,7 @@ public class DnsupdaterService extends Service {
 		//load data and then compare with last execution time
 		SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
 		
-		//https://wrty.eu/bind
+		//https://wrty.eu/bind/?ip=192.168.0.1&key=
 		//ip
 		//key
 
