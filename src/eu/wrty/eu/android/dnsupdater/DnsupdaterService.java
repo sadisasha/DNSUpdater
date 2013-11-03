@@ -13,6 +13,7 @@ public class DnsupdaterService extends Service {
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		// TODO do something useful
+		
 		Context context = this;
 		
 		//load data and then compare with last execution time
