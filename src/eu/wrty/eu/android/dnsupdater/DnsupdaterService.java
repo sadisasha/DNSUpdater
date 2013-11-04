@@ -4,9 +4,11 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.widget.Toast;
 
 public class DnsupdaterService extends Service {
 
@@ -15,6 +17,13 @@ public class DnsupdaterService extends Service {
 		// TODO do something useful
 		
 		Context context = this;
+		Bundle myextras = intent.getExtras();
+		
+		
+		if (myextras.getBoolean("testbutton")){
+		
+			Toast.makeText(getBaseContext(),"test wird gestartet", Toast.LENGTH_SHORT).show();
+		}
 		
 		//load data and then compare with last execution time
 		SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);

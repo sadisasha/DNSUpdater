@@ -2,9 +2,12 @@ package eu.wrty.eu.android.dnsupdater;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -59,6 +62,12 @@ public class MainActivity extends Activity {
 			        Toast msg = Toast.makeText(getBaseContext(),
 "start server dienst und empfange hier result vom server dienst bzw server sendet spezielel braodcast", Toast.LENGTH_SHORT);
 			        msg.show();
+			        
+					Log.d("DNSU", "service started from testbutton");
+					Context ctx = getBaseContext();
+					Intent service = new Intent(ctx, DnsupdaterService.class);
+					service.putExtra("testbutton", true);
+					ctx.startService(service);
 				}
 			});
         }

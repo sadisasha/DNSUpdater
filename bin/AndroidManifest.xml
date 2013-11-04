@@ -26,7 +26,7 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name="MyBroadcastReceiver" >
+        <receiver android:name="CONNECTIVITY_CHANGE_BroadcastReceiver" >
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
