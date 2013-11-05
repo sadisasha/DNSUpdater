@@ -1,5 +1,6 @@
 package eu.wrty.eu.android.dnsupdater;
 
+import android.R.string;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -19,31 +20,16 @@ public class DnsupdaterService extends Service {
 		Context context = this;
 		Bundle myextras = intent.getExtras();
 		
-		
-		if (myextras.getBoolean("testbutton")){
-		
+		if (myextras.getBoolean("testbutton")) {
 			Toast.makeText(getBaseContext(),"test wird gestartet", Toast.LENGTH_SHORT).show();
+		} else {
+			//durch wlan an/aus ausgelöst
 		}
 		
-		//load data and then compare with last execution time
-		SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
 		
-		//https://wrty.eu/bind/?ip=192.168.0.1&key=
-		//ip
-		//key
 
-		int timestamp_last_run = sharedPref.getInt("TIMESTAMP", -1);
-		String key = sharedPref.getString("KEY", "");
-		String url = sharedPref.getString("URL", "");
 		
-		
-		int conn = NetworkUtil.getConnectivityStatus(context);
-		if (conn == NetworkUtil.TYPE_WIFI){
-			Log.d("DNSU", "wifi enabled");
-			String ip = NetworkUtil.getIpAddr(context);
-			Log.d("DNSU", "wifi ip: " + ip);
-
-		}
+	
 		
 		return Service.START_NOT_STICKY;
 	}

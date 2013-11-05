@@ -10,6 +10,7 @@
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -26,11 +27,18 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name="CONNECTIVITY_CHANGE_BroadcastReceiver" >
+        <receiver android:name="WIFI_CHANGE_BR" >
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
         </receiver>
+        
+		<receiver android:name="IP_UPDATE_BR">
+			<intent-filter>
+				<action android:name="eu.wrty.android.intent.action.DNS_UPDATE">
+				</action>
+			</intent-filter>
+		</receiver>
 
         <service
             android:name="DnsupdaterService"

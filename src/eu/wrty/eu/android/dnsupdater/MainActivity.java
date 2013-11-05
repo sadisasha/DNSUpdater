@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
-	Button b1;
+	Button button_test;
 	EditText editText_domain_key;
 	EditText editText_server;
 	
@@ -53,8 +53,8 @@ public class MainActivity extends Activity {
          });
         
         
-        b1 = (Button) findViewById(R.id.test_button);
-        b1.setOnClickListener(new OnClickListener()
+        button_test = (Button) findViewById(R.id.test_button);
+        button_test.setOnClickListener(new OnClickListener()
 	        {
 		        public void onClick(View v)
 		        {
@@ -62,12 +62,12 @@ public class MainActivity extends Activity {
 			        Toast msg = Toast.makeText(getBaseContext(),
 "start server dienst und empfange hier result vom server dienst bzw server sendet spezielel braodcast", Toast.LENGTH_SHORT);
 			        msg.show();
-			        
 					Log.d("DNSU", "service started from testbutton");
+					
 					Context ctx = getBaseContext();
-					Intent service = new Intent(ctx, DnsupdaterService.class);
-					service.putExtra("testbutton", true);
-					ctx.startService(service);
+					Intent service_intent = new Intent(ctx, DnsupdaterService.class);
+					service_intent.putExtra("testbutton", true);
+					ctx.startService(service_intent);
 				}
 			});
         }
