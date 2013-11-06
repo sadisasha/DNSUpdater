@@ -9,4 +9,7 @@
     
     <string name="test_button">Teste Verbindung</string>
     
+    <string name="DNS_UPDATE">eu.wrty.android.intent.action.DNS_UPDATE</string>
+    <string name="DNS_UPDATE_TEST">eu.wrty.android.intent.action.DNS_UPDATE_TEST</string>
+    
 </resources>

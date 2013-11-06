@@ -30,10 +30,10 @@ public class WIFI_CHANGE_BR extends BroadcastReceiver {
 			Log.d("DNSU", "wifi ip: " + ip);
 
 			//ip an server senden
-			//intent erzeugen und mit ip bestücken
-			Intent IP_Update_BR = new Intent();
-			IP_Update_BR.setAction("eu.wrty.android.intent.action.DNS_UPDATE");
-			context.sendBroadcast(IP_Update_BR);			
+			//intent erzeugen und mit ip bestücken					
+			Intent IpUpdateIS = new Intent(context.getApplicationContext(), IpUpdate_IS.class);
+			IpUpdateIS.putExtra("ip", ip);
+			context.getApplicationContext().startService(IpUpdateIS);
 		}	    
 	    
 	    

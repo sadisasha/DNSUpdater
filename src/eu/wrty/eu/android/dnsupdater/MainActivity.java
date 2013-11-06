@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
@@ -26,7 +28,13 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
-        editText_domain_key = (EditText) findViewById(R.id.editText_domain_key);        
+		SharedPreferences settings = getSharedPreferences("UserInfo", 0);
+		String domain_key = settings.getString("editText_domain_key", "");
+		String server = settings.getString("editText_server", "");
+		
+        
+        editText_domain_key = (EditText) findViewById(R.id.editText_domain_key);
+        editText_domain_key.setText(domain_key);
         editText_domain_key.addTextChangedListener(new TextWatcher() {
             public void afterTextChanged(Editable s) {
               // you can call or do what you want with your EditText here
@@ -39,7 +47,8 @@ public class MainActivity extends Activity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {}
          });        
         
-        editText_server = (EditText) findViewById(R.id.editText_server);        
+        editText_server = (EditText) findViewById(R.id.editText_server);     
+        editText_server.setText(server);
         editText_server.addTextChangedListener(new TextWatcher() {
             public void afterTextChanged(Editable s) {
               // you can call or do what you want with your EditText here
@@ -64,10 +73,13 @@ public class MainActivity extends Activity {
 			        msg.show();
 					Log.d("DNSU", "service started from testbutton");
 					
-					Context ctx = getBaseContext();
-					Intent service_intent = new Intent(ctx, DnsupdaterService.class);
-					service_intent.putExtra("testbutton", true);
-					ctx.startService(service_intent);
+					
+					//IntentFilter intentFilter = new IntentFilter("eu.wrty.android.intent.action.DNS_UPDATE_TEST");
+					//registerReceiver( new WIFI_CHANGE_BR() , intentFilter);
+					
+					Intent intent = new Intent("eu.wrty.android.intent.action.DNS_UPDATE_TEST");  
+			        sendBroadcast(intent);
+				
 				}
 			});
         }

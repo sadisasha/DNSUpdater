@@ -42,6 +42,8 @@ public final class R {
         public static final int main=0x7f070000;
     }
     public static final class string {
+        public static final int DNS_UPDATE=0x7f050006;
+        public static final int DNS_UPDATE_TEST=0x7f050007;
         public static final int action_settings=0x7f050001;
         public static final int app_name=0x7f050000;
         public static final int domain_name_key=0x7f050002;

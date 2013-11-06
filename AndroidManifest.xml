@@ -22,7 +22,6 @@
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -30,18 +29,13 @@
         <receiver android:name="WIFI_CHANGE_BR" >
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="eu.wrty.android.intent.action.DNS_UPDATE_TEST" />
             </intent-filter>
         </receiver>
         
-		<receiver android:name="IP_UPDATE_BR">
-			<intent-filter>
-				<action android:name="eu.wrty.android.intent.action.DNS_UPDATE">
-				</action>
-			</intent-filter>
-		</receiver>
 
         <service
-            android:name="DnsupdaterService"
+            android:name="IpUpdate_IS"
             android:icon="@drawable/ic_launcher"
             android:label="@string/service_name" >
         </service>
