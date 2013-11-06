@@ -1,6 +1,9 @@
 package eu.wrty.eu.android.dnsupdater;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.os.Messenger;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -70,7 +73,7 @@ public class MainActivity extends Activity {
 		        	//start server dienst und empfange hier result vom server dienst bzw server sendet spezielel braodcast
 			        Toast msg = Toast.makeText(getBaseContext(),
 "start server dienst und empfange hier result vom server dienst bzw server sendet spezielel braodcast", Toast.LENGTH_SHORT);
-			        msg.show();
+			        //msg.show();
 					Log.d("DNSU", "service started from testbutton");
 					
 					
@@ -78,12 +81,23 @@ public class MainActivity extends Activity {
 					//registerReceiver( new WIFI_CHANGE_BR() , intentFilter);
 					
 					Intent intent = new Intent("eu.wrty.android.intent.action.DNS_UPDATE_TEST");  
+					intent.putExtra("messenger", new Messenger(handler));
 			        sendBroadcast(intent);
 				
 				}
 			});
         }
 
+    Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+                Bundle reply = msg.getData();
+                	// do whatever with the bundle here
+                TextView TextView_response = (TextView) findViewById(R.id.textView4);
+                TextView_response.setText(reply.getString("response", "none"));
+                }
+    };
+    
     //wenn setup complett registriere braodcast receiver
 
     @Override
